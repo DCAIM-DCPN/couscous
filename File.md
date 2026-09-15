@@ -34,3 +34,8 @@ ss -ltnp | grep -E '5901|6080'
 ```
 
 You should see VNC on `5901` and websockify/noVNC on `6080`. If VNC is listed but port `6080` is absent, run the `websockify` command above. If port `6080` is present but access is denied, fix the Codespaces port visibility rather than reinstalling the desktop.
+
+vncserver -list 2>&1
+ss -ltnp | grep -E '5901|6080' || true
+curl -I http://127.0.0.1:5901 2>&1 | head
+
