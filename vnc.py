@@ -1,5 +1,6 @@
 #!/usr/bin/env python3
 import os
+import shutil
 import subprocess
 from pathlib import Path
 
@@ -40,10 +41,11 @@ subprocess.run([
 
 env = os.environ.copy()
 env["DISPLAY"] = ":1"
+browser = shutil.which("chromium") or shutil.which("chromium-browser")
 
 subprocess.Popen(
     [
-        "chromium",
+        browser,
         "--no-sandbox",
         "--disable-dev-shm-usage",
         "--disable-gpu",
